@@ -12,7 +12,7 @@ var users = require('./routes/users');
 var catalog = require('./routes/catalog');
 var compression = require('compression');
 var helmet = require('helmet');
-var mongoDB = 'mongodb://mkeric:Trillium@ds153730.mlab.com:53730/local_library';
+var mongoDB = process.env.MONGODB_URI || 'mongodb://mkeric:Trillium@ds153730.mlab.com:53730/local_library';
 
 mongoose.connect(mongoDB);
 var db = mongoose.connection;
