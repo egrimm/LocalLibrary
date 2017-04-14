@@ -60,3 +60,5 @@ app.use(function(err, req, res, next) {
 module.exports = app;
 
 //SET DEBUG=06-express-locallibrary-tutorial:* & nodemon start
+// renamed folder for GIT, so use this instead:
+// SET DEBUG=LocalLibrary:* & nodemon start

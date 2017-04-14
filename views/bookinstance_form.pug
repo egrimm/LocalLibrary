@@ -37,8 +37,8 @@ block content
                 div.col-xs-6.col-sm-4.col-md-3.col-lg-2
                     select#status.form-control(type='select', placeholder='Select Status &hellip;', name='status', required='true')
                         option(value='') Select Status &hellip;
-                        option(value='Maintenance', selected=(bookinstance.status==='Maintenance')?'selected':false) Maintenance
-                        option(value='Available', selected=(bookinstance.status==='Available')?'selected':false) Available
-                        option(value='Loaned', selected=(bookinstance.status==='Loaned')?'selected':false) Loaned
-                        option(value='Reserved', selected=(bookinstance.status==='Reserved')?'selected':false) Reserved
+                        option(value='Maintenance', selected=(bookinstance && bookinstance.status==='Maintenance')?'selected':false) Maintenance
+                        option(value='Available', selected=(bookinstance && bookinstance.status==='Available')?'selected':false) Available
+                        option(value='Loaned', selected=(bookinstance && bookinstance.status==='Loaned')?'selected':false) Loaned
+                        option(value='Reserved', selected=(bookinstance && bookinstance.status==='Reserved')?'selected':false) Reserved
         button.btn.btn-primary(type='submit') Submit
