@@ -1,0 +1,44 @@
+extends layout
+block content
+    h1=title
+    form(method='POST', action='')
+        if errors
+            div.alert.alert-warning
+                ul
+                    for error in errors
+                        li!=error.msg
+        div.form-group
+            label(for='book') Book:
+            select#book.form-control(type='select', placeholder='Select Book &hellip;', required='true', name='book')
+                option(value='') Select Book &hellip;
+                for book in book_list
+                    if bookinstance
+
+                        option(
+                            value=book._id,
+                            selected=(
+                                bookinstance.book._id.toString()==book._id.toString()
+                                || bookinstance.book._id.toString()==book
+                            ) ? 'selected' : false
+                        ) #{book.title}
+                    else
+                        option(value=book._id) #{book.title}
+        div.form-group
+            label(for='imprint') Imprint:
+            input#imprint.form-control(type='text', placeholder='Publisher and date information', required='true', name='imprint', value=(undefined===bookinstance?'':bookinstance.imprint))
+        div.form-group
+            label(for='due_back') Date when book available:
+            div.row
+                div.col-xs-6.col-sm-4.col-md-3.col-lg-2
+                    input#due_back.form-control(type='date', name='due_back', value=(undefined===bookinstance?'':bookinstance.dueback))
+        div.form-group
+            label(for='status') Status:
+            div.row
+                div.col-xs-6.col-sm-4.col-md-3.col-lg-2
+                    select#status.form-control(type='select', placeholder='Select Status &hellip;', name='status', required='true')
+                        option(value='') Select Status &hellip;
+                        option(value='Maintenance', selected=(bookinstance.status==='Maintenance')?'selected':false) Maintenance
+                        option(value='Available', selected=(bookinstance.status==='Available')?'selected':false) Available
+                        option(value='Loaned', selected=(bookinstance.status==='Loaned')?'selected':false) Loaned
+                        option(value='Reserved', selected=(bookinstance.status==='Reserved')?'selected':false) Reserved
+        button.btn.btn-primary(type='submit') Submit
